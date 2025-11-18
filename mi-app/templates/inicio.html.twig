@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block tittle %}Coches{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-5 fw-bold text-primary">Web de Coches</h1>
+        <h2 class="text-secondary">Página Principal</h2>
+        <p class="text-muted"></p>
+    </div>
+    {% if coches is not empty %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover shadow-sm align-middle">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Carroceria</th>
+                        <th colspan="2" class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for coche in coches %}
+                        <tr>
+                            <td>
+                                <a href="http://127.0.0.1:8080/coche/{{ coche.id }}">
+                                    {{ coche.marca }}
+                                </a>
+                            </td>
+                            <td>{{ coche.modelo }}</td>
+                            <td>{{ coche.carroceria }}</td>
+                            <td class="text-center">
+                                <a href="http://127.0.0.1:8080/coche/editar/{{ coche.id }}" class="btn btn-sm btn-warning">
+                                    ✏️ Editar
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a href="http://127.0.0.1:8080/coche/delete/{{ coche.id }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que deseas borrar este coche?')">
+                                    🗑️ Borrar
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+				<tfooter>
+				<tr>
+                        <th colspan="5" class="text-center"><a href="http://127.0.0.1:8080/coche/nuevo" class="btn-coche">🚗 Añadir coche 🚗</th>
+                    </tr>
+				</tfooter>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center mt-4">
+            No hay coches.
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+
+
+

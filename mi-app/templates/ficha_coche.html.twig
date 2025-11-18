@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Coches{% endblock %}
+{% block body %}
+<div>
+    <h1>Ficha del coche</h1>
+    {% if coche %}
+        {{ include ('partials/datos_coche.html.twig', { 'coche': coche }) }}
+    {% else %}
+        <p>Coche no encontrado</p>
+    {% endif %}
+    
+    <a href="http://127.0.0.1:8080/" class="btn-coche">Inicio</a>
+</div>
+{% endblock %}
